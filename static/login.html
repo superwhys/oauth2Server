@@ -1,0 +1,70 @@
+{{define "login.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SuperYong 登录</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="base">
+        <div class="container">
+            <p>SuperYong Authorize Login In</p>
+            <form action="/oauth2/login" method="POST" class="form-base">
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input type="text" class="form-control" name="username" required placeholder="Please enter your user name">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Please enter your password">
+                </div>
+                <div class="login-box"><button type="submit" class="btn btn-success login-btn">Login</button></div>
+            </form>
+        </div>
+    </div>
+
+</body>
+<style>
+    html, body {
+        height: 100%;
+    }
+    .base {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #a4e8c9;
+    }
+    .form-base {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .container p {
+        display: block;
+        margin: 0 auto;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .form-group {
+        width: 40%;
+        margin: 20px auto;
+    }
+
+    .login-box {
+        margin: 20px auto;
+        width: 60%;
+    }
+    .login-btn {
+        display: block;
+        margin: 0 auto;
+    }
+
+</style>
+</html>
+{{ end }}
