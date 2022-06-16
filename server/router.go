@@ -18,8 +18,10 @@ func (s *Oauth2Server) SetUpRouter(sOpt session.Option) {
 
 	oauthGroup := Router.Group("/oauth2")
 	{
-		GetAndPostHandler(oauthGroup, "/login", s.loginHandler)
+		oauthGroup.GET("/login", s.loginPageHandler)
+		oauthGroup.POST("/login", s.loginHandler)
 		oauthGroup.GET("/auth", s.authHandler)
 		GetAndPostHandler(oauthGroup, "/authorize", s.authorizeHandler)
+		oauthGroup.POST("/token", s.tokenHandler)
 	}
 }

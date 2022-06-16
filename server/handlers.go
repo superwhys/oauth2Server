@@ -15,9 +15,7 @@ func UserAuthorizeHandler(w http.ResponseWriter, r *http.Request) (userID string
 		return
 	}
 
-	superLog.Info(3)
 	uid, ok := store.Get("LoggedInUserID")
-	superLog.Info(4)
 	if !ok {
 		superLog.Info("user not login, redirect to login page")
 		if r.Form == nil {
@@ -25,22 +23,18 @@ func UserAuthorizeHandler(w http.ResponseWriter, r *http.Request) (userID string
 		}
 
 		store.Set("userForm", r.Form)
-		superLog.Info(5)
 		err = store.Save()
 		if err != nil {
 			superLog.Error("store save form error: %v", err)
 			return "", err
 		}
-		superLog.Info(6)
 		w.Header().Set("Location", "/oauth2/login")
 		w.WriteHeader(http.StatusFound)
 		return
 	}
-	superLog.Info(7)
 	userID = uid.(string)
 	store.Delete("LoggedInUserID")
 	store.Save()
-	superLog.Info(8)
 	superLog.Infof("userId: %v", userID)
 	superLog.Infof("err: %v", err)
 	return
